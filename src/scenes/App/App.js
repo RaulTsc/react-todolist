@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import moment from "moment-timezone";
 import "./App.css";
 import { TodosList } from "./components/TodosList";
+import { addReminder } from "./redux/actions";
 
 export class App extends React.Component {
   constructor(props) {
@@ -11,6 +12,15 @@ export class App extends React.Component {
       todoText: "",
       dueDate: ""
     };
+  }
+
+  addTodo(e) {
+    this.props.addReminder(
+      this.taskInput.value,
+      moment(this.timeInput.value).toDate()
+    );
+    this.setState({ todoText: "" });
+    this.setState({ disabled: true });
   }
 
   render() {
@@ -31,7 +41,11 @@ export class App extends React.Component {
             defaultValue={moment().format("YYYY-MM-DDTHH:mm")}
             onChange={e => this.setState({ dueDate: e.target.value })}
           />
-          <button className="btn btn-success" type="button">
+          <button
+            className="btn btn-success"
+            type="button"
+            onClick={e => this.addTodo(e)}
+          >
             Add todo
           </button>
           <TodosList todos={this.props.todos} />
@@ -45,5 +59,7 @@ export default connect(
   state => ({
     todos: state.todos
   }),
-  {}
+  {
+    addReminder
+  }
 )(App);
