@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import moment from "moment-timezone";
 import "./App.css";
+import { TodosList } from "./components/TodosList";
 
 export class App extends React.Component {
   constructor(props) {
@@ -33,6 +34,7 @@ export class App extends React.Component {
           <button className="btn btn-success" type="button">
             Add todo
           </button>
+          <TodosList todos={this.props.todos} />
         </div>
       </div>
     );
