@@ -1,5 +1,1 @@
-function test() {
-  return 1;
-}
-
-const bla = 1;
+export const ADD_REMINDER = "ADD_REMINDER";

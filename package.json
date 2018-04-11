@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "moment": "^2.22.0",
+    "moment-timezone": "^0.5.14",
+    "node-uuid": "^1.4.8",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
